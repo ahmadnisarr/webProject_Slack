@@ -1,0 +1,334 @@
+﻿@model List<userProfile>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+
+    <style>
+        .chat-history {
+            overflow-y: auto;
+        }
+
+        .people-list {
+            
+            height: 95vh;
+            overflow-y: auto;
+        }
+
+        /* Night mode styles */
+        .night-mode {
+            background-color: #2c2c2c;
+            color: #ffffff;
+        }
+        .night-mode  .chat-sidebar {
+              
+            background-color: #2c2c2c;
+        }
+
+        .night-mode .chat-app {
+            background-color: #3a3a3a;
+            color: white;
+        }
+        .night-mode .show-list{
+            background-color:black;
+        }
+        .night-mode .people-list {
+            background-color: #2c2c2c;
+            color: white;
+        }
+
+        .night-mode .chat .chat-history .message-data-time {
+            color: white;
+        }
+
+        .night-mode .chat-history .chat-list {
+            background-color: #3a3a3a;
+            color: white;
+        }
+
+        .night-mode .chat-history {
+            background-color: #3a3a3a;
+            color: white;
+        }
+
+        .night-mode .chat-header {
+            background-color: #2c2c2c;
+            color: white;
+            border-bottom: 1px solid #444444;
+        }
+
+        .night-mode .chat-message .form-control {
+            background-color: #444444;
+            color: white;
+            border: 1px solid #555555;
+        }
+
+        .night-mode .chat-message .form-control::placeholder {
+            color: white;
+            opacity: 1; /* Ensures the color is not faded */
+        }
+
+        .night-mode .chat-message .input-group-text {
+            background-color: #555555;
+            color: white;
+            border: 1px solid #666666;
+        }
+
+        .night-mode .chat-list .user-item {
+            background-color: #3a3a3a;
+            color: white;
+        }
+
+        .night-mode .chat-list .user-item .about {
+            color: #ffffff;
+        }
+
+        .night-mode .chat-list .user-item .status {
+            color: #bbbbbb;
+        }
+
+        /* #nightModeToggle {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        } */
+
+        .night-mode #nightModeToggle i {
+            color: yellow;
+        }
+
+        #nightModeToggle i.fa-sun {
+            color: yellow;
+        }
+
+        #nightModeToggle i.fa-moon {
+            color: white;
+        }
+
+        /* Backward arrow for mobile view */
+        .backward-arrow {
+            display: none;
+        }
+
+        @@media (max-width: 768px) {
+            .backward-arrow {
+                display: block;
+                cursor: pointer;
+                color: white;
+                font-size: 25px;
+            }
+
+            .chat {
+                display: none;
+            }
+
+            .chat.show-chat {
+                display: block;
+            }
+
+            .people-list.show-list {
+                display: block;
+            }
+
+            .people-list {
+                display: none;
+            }
+        }
+
+        .chat-sidebar {
+            height: 95vh;
+            overflow-y: auto;
+            background-color:white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 5px;
+        }
+
+            .chat-sidebar .nav-icons {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 25%;
+                
+            }
+
+                .chat-sidebar .nav-icons a {
+                    color:purple;
+                    margin: 1rem 0;
+                    font-size: 1.4rem;
+                }
+
+            .chat-sidebar .user-profile {
+                
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: auto;
+                padding-bottom: 1rem;
+                font-size:1.4rem;
+            }
+
+                .chat-sidebar .user-profile input {
+                    border-radius: 50%;
+                    width: 50px;
+                    height: 50px;
+                    object-fit: cover;
+                }
+
+        .chat-app .chat {
+        margin-left:0px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row clearfix">
+
+             <div class="col-lg-1 chat-sidebar ms-3">
+
+                <div class="nav-icons mt-2">
+                      <h1 >Chats</h1>
+                      <a href="#"><i class="fas fa-comment-alt"></i></a>
+                      <a href="#"><i class="fas fa-user-friends"></i></a>
+                </div>
+
+                <div class="user-profile">
+                    <button id="nightModeToggle" class="btn  mb-4" style="background-color: purple;"><i class="fa fa-moon"></i></button>
+                    <input type="image"  src="@Url.Content("~/" + ViewBag.profilePath)" class="mt-0 pic rounded-circle">
+
+                </div>
+
+             </div>
+
+            <div class="col-lg-3 people">
+
+                    <div id="plist" class="people-list bg-white show-list" style="height:95vh;">
+
+                    <input style="height:48px;font-size:20px" class="rounded ms-4 w-75  mt-4" id="searchInput" type="search" name="searchPeople" value="" placeholder="  Search chat" />
+
+                    <ul class="list-unstyled chat-list mt-5 mb-0" id="chatList">
+                            @foreach (var users in Model)
+                            {
+                                @if (users.userId != ViewBag.senderId)
+                                {
+                                    <li class="clearfix user-item" data-sender-profilepath="@ViewBag.profilePath" data-user-id="@ViewBag.senderId" data-user-name="@ViewBag.senderName" data-receiver-id="@users.userId" data-receiver-name="@users.UserName" data-receiver-profilepath="@users.profilePath">
+                                      
+                                        <img style="width:65px; height:65px;" src="@Url.Content("~/" + users.profilePath)" alt="pic" class="pic rounded-circle">
+                                        <div class="about mt-2">
+                                            <div class="name">@users.UserName</div>
+                                            <div class="status mt-1"> <i class="fa fa-circle offline"></i> left 7 mins ago </div>
+                                        </div>
+                                    </li>
+
+                                }
+                            }
+                        </ul>
+                        
+                    </div>
+            </div>
+
+            <div class="col-lg-7">
+                <div class="card chat-app">
+
+                    <div class="chat-blank" style="height: 95vh; display: flex; align-items: center; justify-content: center;">
+                        <h2>Select a chat to start messaging</h2>
+                    </div>
+
+                    <div class="chat" style="height:95vh; display:none">
+
+                        <div class="chat-header clearfix">
+                            <div class="row">
+                                <div class="col-lg-1 col-2">
+                                    <i class="fa fa-arrow-left" aria-hidden="true" id="backwardArrow"></i>
+                                    
+                                </div>
+                                <div class="col-lg-6 col-10">
+                                    <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
+                                        <img id="chatUserImg" style="width:65px; height:65px;" src="" alt="pic" class="pic rounded-circle">
+                                    </a>
+                                    <div class="chat-about mt-1">
+                                          <h5 class="m-b-0" id="chatUserName">                                       
+                                            <br>
+                                            <small style="font-weight: normal;"></small>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chat-history" style="height:75vh;">
+                            <ul class="m-b-0" id="messageList"></ul>
+                        </div>
+
+                        <div class="chat-message clearfix">
+                            <div class="input-group mb-0">
+                                <input id="messageInput" type="text" class="form-control" placeholder="Write your message...">
+                                <input type="hidden" id="receiverId" value="reciever" />
+                                <input type="hidden" id="senderId" value="sender" />
+                                <div class="input-group-prepend">
+                                    <button id="sendButton" class="input-group-text" style="font-size: 25px;">
+                                        <i class="fa fa-send"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/signalr/dist/browser/signalr.min.js"></script>
+    <script src="~/js/chat.js"></script>
+    <script>
+        document.getElementById('searchInput').addEventListener('input', function () {
+            console.log("listening input...");
+            let filter = this.value.toLowerCase();
+            let chatItems = document.querySelectorAll('#chatList .user-item');
+
+            chatItems.forEach(function (item) {
+                let userName = item.getAttribute('data-receiver-name').toLowerCase();
+                if (userName.includes(filter)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        
+
+        document.getElementById('nightModeToggle').addEventListener('click', function () {
+            document.body.classList.toggle('night-mode');
+            var icon = document.querySelector('#nightModeToggle i');
+            if (document.body.classList.contains('night-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+﻿@{
+    Layout = "_newLayout";
+}
+
+<div class="display-2 text-center" style="margin-top: 67px;">
+    <span style="font-weight: bold;">chat. meet. </span>
+    <span style="color: purple;font-weight: bold;">call. collaborate.</span>
+</div>
+
+<!-- vedios -->
+<div class="container-fluid" style="background-color:rgb(247, 243, 234); margin-top: 87px;">
+    <div class="row pt-2">
+        <div class="col-12 ratio" style="--bs-aspect-ratio: 30%;">
+            <video muted autoplay loop>
+                <source src="/vedios/1.webm">
+            </video>
+        </div>
+        <div class="row " style="margin-top: 90px;">
+            <div class="col-lg-6">
+                <div class="ratio" style="--bs-aspect-ratio: 38%;">
+                    <video muted autoplay loop>
+                        <source src="/vedios/2.webm">
+                    </video>
+                </div>
+            </div>
+            <div class="col-lg-6 p-2">
+                <p class="h1" style="font-size: 40px; font-weight: bold;"> Move faster with your tools in one place</p>
+                <span class="display-6">Automate away routine tasks with the power of generative AI and simplify your workflow with all your favourite apps ready to go in yammer.</span>
+            </div>
+        </div>
+
+        <div class="row " style="margin-top: 90px;">
+            <div class="col-lg-6 p-2">
+                <p class="h1" style="font-size: 40px; font-weight: bold;"> Choose how you want to work</p>
+                <span class="display-6">In yammer, you’ve got all the flexibility to work when, where and how it’s best for you. You can easily chat, send audio and video clips, or join a huddle to talk things through live.</span>
+            </div>
+            <div class="col-lg-6">
+                <div class="ratio" style="--bs-aspect-ratio: 38%;">
+                    <video muted autoplay loop>
+                        <source src="/vedios/3.webm">
+                    </video>
+                </div>
+            </div>
+        </div>
+
+        <div class="row " style="margin-top: 90px;">
+            <div class="col-lg-6">
+                <div class="ratio" style="--bs-aspect-ratio: 38%;">
+                    <video muted autoplay loop>
+                        <source src="/vedios/4.webm">
+                    </video>
+                </div>
+            </div>
+            <div class="col-lg-6 p-2">
+                <p class="h1" style="font-size: 40px; font-weight: bold;">Bring your team together</p>
+                <span class="display-6">At the heart of yammer are channels: organised spaces for everyone and everything that you need for work. In channels, it’s easier to connect across departments, offices, time zones and even other companies.</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- vedios end -->
+
+
+<div class="container-fluid" style="background-color:white; margin-top: 95px;">
+    <div class="row p-4">
+        <div class="col-12 text-center">
+            <span class="display-1" style="font-weight: bolder;">Why  </span>
+            <span class="display-1" style="color: purple;">Choose us</span>
+        </div>
+    </div>
+    <div class="row" style="background-color:rgb(247, 243, 234); margin-top: 15px;">
+        <div class="col-lg-4 col-md-12 p-2">
+            <img class="rounded-circle" style="background-color: black;" src="/images/1choose.png" alt="">
+            <span class="text-dark h3 ">Smart Load balancer</span>
+            <p class="text-dark p-5" style="font-size: 20px;">Our bigbluebutton smart network automatically choose the nearest and best performance server to host your next meeting</p>
+        </div>
+        <div class="col-lg-4 col-md-12 p-2">
+            <img class="rounded-circle" style="background-color: black;" src="/images/2choose.png" alt="">
+            <span class="text-dark h3">Unlimited Capacity!</span>
+            <p class="text-dark p-5" style="font-size: 20px;"> With our network you can host up to 50,000 simultaneous user in many different meetings thanks to our smart load balance</p>
+
+        </div>
+        <div class="col-lg-4 col-md-12 p-2">
+            <img class="rounded-circle" style="background-color: black;" src="/images/3choose.png" alt="">
+            <span class="text-dark h3">Extended Recordings</span>
+            <p class="text-dark p-5" style="font-size: 20px;"> With our platform you can download your MP4 recordings to view it later on any device</p>
+        </div>
+    </div>
+
+
+    <div class="row" style="background-color:rgb(247, 243, 234); margin-top: 0px;">
+        <div class="col-lg-6 p-5">
+            <p style="margin-left: 1%; font-size: 20px;">
+                SaaS and On-Premise Service Offerings
+                <span style="margin-left: 16%;">Enterprise Dashboard</span>
+            </p>
+            <p style="margin-left: 1%; font-size:20px">
+                Enterprise-Grade Collaboration Features
+                <span style="margin-left: 14%;">Role-Based Access</span>
+            </p>
+            <p style="margin-left: 1%; font-size: 20px;">
+                Uninterrupted and Seamless Communication
+                <span style="margin-left: 7%;">Unlimited Work</span>
+            </p>
+            <p style="margin-left: 1%; font-size: 20px;">
+                Uniform sync on all device
+                <span style="margin-left: 33%;">End-to-End Encrpyted</span>
+            </p>
+        </div>
+        <div class="col-lg-6">
+            <img src="/images/mainUS.png" alt="" style="margin-left: 10%;">
+        </div>
+    </div>
+
+</div>
+
+@section posting {
+
+        <a class="nav-link text-dark" asp-area="" asp-controller="posting" asp-action="Index">Posts</a>
+     
+}
